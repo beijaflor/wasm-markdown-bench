@@ -1,24 +1,40 @@
 <template>
   <section class="main-section">
     <div class="columnLeft">
-      <textarea class="source-textarea" v-model="source.content" />
+      <textarea class="source-textarea" v-model="source.content" @blur="updateHandler" />
     </div>
     <div class="columnRight">
-      <textarea class="source-textarea" v-model="source.content" disabled />
+      <textarea class="source-textarea" v-model="source.html" disabled />
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import marked from 'marked';
 import sampleMd from '../assets/sample';
 
 export default defineComponent({
   name: 'Home',
   components: {},
   setup() {
-    const source = reactive<{ content: string }>({ content: sampleMd });
-    return { source };
+    const source = reactive<{ content: string; html: string }>({ content: sampleMd, html: '' });
+    const updateHtml = () => {
+      const markedHtml = marked(source.content);
+      source.html = markedHtml;
+    };
+
+    const updateHandler = (e: FocusEvent) => {
+      const target = e.target as HTMLTextAreaElement;
+      if (target) target.disabled = true;
+
+      updateHtml();
+
+      setTimeout(() => {
+        target.disabled = false;
+      }, 1000);
+    };
+    return { source, updateHandler };
   },
 });
 </script>
