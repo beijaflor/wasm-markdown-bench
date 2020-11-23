@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "wasm:build": "sh -c '(cd wasm-markdown; wasm-pack build)'"
   },
   "dependencies": {
     "core-js": "^3.6.5",
