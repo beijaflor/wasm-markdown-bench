@@ -11,9 +11,9 @@
     <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />自動更新</label>
     <dl class="performance-list">
       <dt class="listItem">lategst:&nbsp;</dt>
-      <dd class="listItem">{{ status.latest }}</dd>
+      <dd class="listItem">{{ status.latest }}&nbsp;[ms]</dd>
       <dt class="listItem" style="margin-left: 20px;">average:&nbsp;</dt>
-      <dd class="listItem">{{ status.average }}</dd>
+      <dd class="listItem">{{ status.average }}&nbsp;[ms]</dd>
     </dl>
   </section>
 </template>
