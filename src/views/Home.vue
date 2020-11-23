@@ -1,13 +1,14 @@
 <template>
   <section class="main-section">
     <div class="columnLeft">
-      <textarea class="source-textarea" v-model="source.content" @keyup="updateHandler" />
+      <textarea class="source-textarea" v-model="source.content" @keyup="keyupHandler" @blur="blurHandler" />
     </div>
     <div class="columnRight">
       <section class="output-htmlarea" v-html="source.html" />
     </div>
   </section>
   <section class="status-container">
+    <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />自動更新</label>
     <dl class="performance-list">
       <dt class="listItem">lategst:&nbsp;</dt>
       <dd class="listItem">{{ status.latest }}</dd>
@@ -18,46 +19,65 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 import marked from 'marked';
 import sampleMd from '../assets/sample';
+
+const renderStatusComposition = () => {
+  const status = reactive<{ latest: number; average: number }>({ latest: 0, average: 0 });
+  const updateSpeed = (start: number, end: number) => {
+    const duration = end - start;
+    status.latest = Math.floor(duration * 1000) / 1000;
+    status.average = Math.floor(((status.average + duration) / 2) * 1000) / 1000;
+  };
+
+  return { status, updateSpeed };
+};
+
+const sourceComposition = () => {
+  const source = reactive<{ content: string; html: string }>({ content: sampleMd, html: '' });
+  const updateHtml = () => {
+    const markedHtml = marked(source.content);
+    source.html = markedHtml;
+  };
+
+  return { source, updateHtml };
+};
 
 export default defineComponent({
   name: 'Home',
   components: {},
   setup() {
-    const source = reactive<{ content: string; html: string }>({ content: sampleMd, html: '' });
-    const status = reactive<{ latest: number; average: number }>({ latest: 0, average: 0 });
+    const autoUpdate = ref<boolean>(false);
 
-    const updateHtml = () => {
-      const markedHtml = marked(source.content);
-      source.html = markedHtml;
-    };
+    const { source, updateHtml } = sourceComposition();
+    const { status, updateSpeed } = renderStatusComposition();
 
-    const updateSpeed = (start: number, end: number) => {
-      const duration = end - start;
-      status.latest = Math.floor(duration * 1000) / 1000;
-      status.average = Math.floor(((status.average + duration) / 2) * 1000) / 1000;
-    };
-
-    const updateHandler = () => {
-      // const updateHandler = (e: KeyboardEvent) => {
-      // const target = e.target as HTMLTextAreaElement;
-      // if (target) target.disabled = true;
+    const executeUpdateSequence = () => {
       const start = performance.now();
-
       updateHtml();
-
       const end = performance.now();
-
       updateSpeed(start, end);
-      // setTimeout(() => {
-      //   target.disabled = false;
-      // }, 1000);
+    };
+
+    const keyupHandler = () => {
+      if (!autoUpdate.value) return;
+
+      executeUpdateSequence();
+    };
+
+    const blurHandler = (e: KeyboardEvent) => {
+      autoUpdate.value;
+      const target = e.target as HTMLTextAreaElement;
+      if (target) target.disabled = true;
+
+      executeUpdateSequence();
+
+      target.disabled = false;
     };
 
     updateHtml();
-    return { source, status, updateHandler };
+    return { autoUpdate, blurHandler, source, status, keyupHandler };
   },
 });
 </script>
@@ -91,6 +111,13 @@ export default defineComponent({
 .status-container {
   height: 5vh;
   background: #f0f0f0;
+
+  > .floatLeft {
+    float: left;
+    line-height: 5vh;
+    font-size: 11px;
+    color: #555;
+  }
 }
 
 .performance-list {
