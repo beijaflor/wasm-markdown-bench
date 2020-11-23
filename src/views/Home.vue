@@ -19,9 +19,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent, inject, reactive, ref } from 'vue';
 import marked from 'marked';
 import sampleMd from '../assets/sample';
+import { WASM_KEY } from '../main';
 
 const renderStatusComposition = () => {
   const status = reactive<{ latest: number; average: number }>({ latest: 0, average: 0 });
@@ -48,6 +49,9 @@ export default defineComponent({
   name: 'Home',
   components: {},
   setup() {
+    const wasm = inject(WASM_KEY) as { greet: () => void };
+    wasm.greet();
+
     const autoUpdate = ref<boolean>(false);
 
     const { source, updateHtml } = sourceComposition();

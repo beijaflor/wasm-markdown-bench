@@ -1,1 +1,3 @@
 src/shims-vue.d.ts
+wasm-markdown/*
+vue.config.js
