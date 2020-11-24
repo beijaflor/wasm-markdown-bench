@@ -15,8 +15,8 @@ extern "C" {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    let markdown_input = "Hello world, this is a ~~complicated~~ *very simple* example.";
+pub fn greet(source_text: &str) {
+    let markdown_input = source_text;
 
     // Set up options and parser. Strikethroughs are not part of the CommonMark standard
     // and we therefore must enable it explicitly.

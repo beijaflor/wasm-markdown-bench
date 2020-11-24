@@ -49,8 +49,8 @@ export default defineComponent({
   name: 'Home',
   components: {},
   setup() {
-    const wasm = inject(WASM_KEY) as { greet: () => void };
-    wasm.greet();
+    const wasm = inject(WASM_KEY) as { greet: (sourceText: string) => void };
+    wasm.greet('Hello world, this is a ~~complicated~~ *very simple* example.');
 
     const autoUpdate = ref<boolean>(false);
 
