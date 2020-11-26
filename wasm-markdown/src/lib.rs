@@ -15,7 +15,7 @@ extern "C" {
 }
 
 #[wasm_bindgen]
-pub fn greet(source_text: &str) {
+pub fn greet(source_text: &str) -> String {
     let markdown_input = source_text;
 
     // Set up options and parser. Strikethroughs are not part of the CommonMark standard
@@ -27,5 +27,5 @@ pub fn greet(source_text: &str) {
     let mut html_output = String::new();
     html::push_html(&mut html_output, parser);
 
-    alert(&html_output);
+    html_output
 }

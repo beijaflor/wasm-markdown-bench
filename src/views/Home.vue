@@ -50,7 +50,7 @@ export default defineComponent({
   components: {},
   setup() {
     const wasm = inject(WASM_KEY) as { greet: (sourceText: string) => void };
-    wasm.greet('Hello world, this is a ~~complicated~~ *very simple* example.');
+    alert(wasm.greet('Hello world, this is a ~~complicated~~ *very simple* example.'));
 
     const autoUpdate = ref<boolean>(false);
 
