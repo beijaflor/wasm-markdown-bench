@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import PageJS from '../views/JS.vue';
+import PageRust from '../views/Rust.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'JS',
     component: PageJS,
+  },
+  {
+    path: '/rust',
+    name: 'Rust',
+    component: PageRust,
   },
   {
     path: '/about',
