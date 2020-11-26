@@ -46,7 +46,7 @@ const sourceComposition = () => {
 };
 
 export default defineComponent({
-  name: 'Home',
+  name: 'PageJS',
   components: {},
   setup() {
     const wasm = inject(WASM_KEY) as { greet: (sourceText: string) => void };
