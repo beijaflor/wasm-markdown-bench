@@ -6,13 +6,13 @@ import PageBench from '../views/Bench.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'JS',
-    component: PageJS,
-  },
-  {
-    path: '/rust',
     name: 'Rust',
     component: PageRust,
+  },
+  {
+    path: '/js',
+    name: 'JS',
+    component: PageJS,
   },
   {
     path: '/bench',

@@ -48,7 +48,7 @@ export default defineComponent({
   name: 'PageJS',
   components: {},
   setup() {
-    const autoUpdate = ref<boolean>(false);
+    const autoUpdate = ref<boolean>(true);
 
     const { source, updateHtml } = sourceComposition();
     const { status, updateSpeed } = renderStatusComposition();
