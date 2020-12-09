@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wasm-markdown-bench/precache-manifest.06e18f767683bf3469864d8e1b1d94e1.js"
+  "/wasm-markdown-bench/precache-manifest.9e3ab57ecf4185f00ac9f6cf38827f2f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "rust-wasm"});
