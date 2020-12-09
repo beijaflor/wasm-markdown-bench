@@ -35,7 +35,7 @@ macro_rules! measure_elapsed_time {
 }
 
 #[wasm_bindgen]
-pub fn greet(source_text: &str) -> String {
+pub fn pulldown_cmark(source_text: &str) -> String {
     measure_elapsed_time!("pulldown_cmark\telapsed:", {
         let markdown_input = source_text;
 

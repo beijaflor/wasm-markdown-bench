@@ -6,7 +6,7 @@ import router from './router';
 type BindgenCommonFunction = (sourceText: string) => string;
 
 const WASM_KEY: InjectionKey<{
-  greet: BindgenCommonFunction;
+  pulldown_cmark: BindgenCommonFunction;
   markdown_rs: BindgenCommonFunction;
   comrak: BindgenCommonFunction;
   strait_string: BindgenCommonFunction;

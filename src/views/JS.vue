@@ -8,7 +8,7 @@
     </div>
   </section>
   <section class="status-container">
-    <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />自動更新</label>
+    <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />auto update</label>
     <dl class="performance-list">
       <dt class="listItem">lategst:&nbsp;</dt>
       <dd class="listItem">{{ status.latest }}&nbsp;[ms]</dd>

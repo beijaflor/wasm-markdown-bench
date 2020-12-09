@@ -8,7 +8,7 @@
     </div>
   </section>
   <section class="status-container">
-    <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />自動更新</label>
+    <label class="floatLeft"><input type="checkbox" v-model="autoUpdate" />auto update</label>
     <dl class="performance-list">
       <dt class="listItem">lategst:&nbsp;</dt>
       <dd class="listItem">{{ status.latest }}&nbsp;[ms]</dd>
@@ -38,7 +38,7 @@ const sourceComposition = () => {
   const wasm = inject(WASM_KEY);
   const source = reactive<{ content: string; html: string }>({ content: sampleMd, html: '' });
   const updateHtml = () => {
-    const markedHtml = wasm?.comrak(source.content);
+    const markedHtml = wasm?.pulldown_cmark(source.content);
     source.html = markedHtml || '';
   };
 
