@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import PageJS from '../views/JS.vue';
 import PageRust from '../views/Rust.vue';
+import PageBench from '../views/Bench.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/rust',
     name: 'Rust',
     component: PageRust,
+  },
+  {
+    path: '/bench',
+    name: 'Bench',
+    component: PageBench,
   },
   {
     path: '/about',

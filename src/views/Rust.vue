@@ -20,7 +20,6 @@
 
 <script lang="ts">
 import { defineComponent, inject, reactive, ref } from 'vue';
-import marked from 'marked';
 import sampleMd from '../assets/sample';
 import { WASM_KEY } from '../main';
 
@@ -36,10 +35,11 @@ const renderStatusComposition = () => {
 };
 
 const sourceComposition = () => {
+  const wasm = inject(WASM_KEY);
   const source = reactive<{ content: string; html: string }>({ content: sampleMd, html: '' });
   const updateHtml = () => {
-    const markedHtml = marked(source.content);
-    source.html = markedHtml;
+    const markedHtml = wasm?.comrak(source.content);
+    source.html = markedHtml || '';
   };
 
   return { source, updateHtml };
@@ -49,9 +49,6 @@ export default defineComponent({
   name: 'PageJS',
   components: {},
   setup() {
-    const wasm = inject(WASM_KEY) as { greet: (sourceText: string) => void };
-    alert(wasm.greet('Hello world, this is a ~~complicated~~ *very simple* example.'));
-
     const autoUpdate = ref<boolean>(false);
 
     const { source, updateHtml } = sourceComposition();

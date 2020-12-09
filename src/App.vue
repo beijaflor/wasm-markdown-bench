@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">JS</router-link> | <router-link to="/rust">Rust</router-link> |
+    <router-link to="/bench">Bench</router-link> |
     <router-link to="/about">About</router-link>
   </div>
 
