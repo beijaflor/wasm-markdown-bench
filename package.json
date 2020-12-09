@@ -6,9 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "bench:rust": "(cd wasm-markdown && cargo +nightly bench)",
+    "bench:node": "node bench/bench.js"
   },
   "dependencies": {
+    "bench": "^0.3.6",
     "core-js": "^3.6.5",
     "marked": "^1.2.5",
     "register-service-worker": "^1.7.1",
