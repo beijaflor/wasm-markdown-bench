@@ -1,10 +1,17 @@
 # Benchmark of markdown converter in rust-wasm and v8
 
-## brief result
+https://beijaflor.github.io/wasm-markdown-bench/
 
-In use of string, v8 is 3 time faster in native, and 1.5 faster in web assembly in naive implementation
+## app
 
-It may be way to optimize with rust implementation to make faster, but, in casual use, I prefer not using rust...
+| method         | lang | bench(ns)          |
+| -------------- | ---- | ------------------ |
+| marked         | JS   | 4.480000003241003  |
+| pulldown_cmark | Rust | 2.4299999931827188 |
+| markdown_rs    | Rust | 41.44000000087544  |
+| comrak         | Rust | 8.734999995795079  |
+
+## native
 
 ### Rust
 
