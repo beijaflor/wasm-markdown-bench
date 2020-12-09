@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wasm-markdown-bench/css/about.6011ee2a.css"
   },
   {
-    "revision": "8f5f2b8e5caa3c9936b1",
-    "url": "/wasm-markdown-bench/css/app.07e6e4cd.css"
+    "revision": "1c3157f883661a430d4b",
+    "url": "/wasm-markdown-bench/css/app.c5f78cfb.css"
   },
   {
     "revision": "82b9c7a5a3f405032b1db71a25f67021",
     "url": "/wasm-markdown-bench/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "7659e0885dd601e8d6dd7ecd9b27fcfb",
+    "revision": "30afb01086562a3b7d6180c2fc7ee35c",
     "url": "/wasm-markdown-bench/index.html"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wasm-markdown-bench/js/about.1a401733.js"
   },
   {
-    "revision": "8f5f2b8e5caa3c9936b1",
-    "url": "/wasm-markdown-bench/js/app.a3554fd0.js"
+    "revision": "1c3157f883661a430d4b",
+    "url": "/wasm-markdown-bench/js/app.65d422bd.js"
   },
   {
     "revision": "b8e957e89fa21fa37316",
