@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "bench:rust": "(cd wasm-markdown && cargo +nightly bench)",
-    "bench:node": "node bench/bench.js"
+    "bench:node": "node bench/bench.js",
+    "wasm:build": "(cd wasm-markdown && wasm-pack build)"
   },
   "dependencies": {
     "bench": "^0.3.6",
